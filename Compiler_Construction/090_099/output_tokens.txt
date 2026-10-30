@@ -1,0 +1,285 @@
+Token   : KEYWORD
+Lexeme  : int
+Line No : 4
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : main
+Line No : 4
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : (
+Line No : 4
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : )
+Line No : 4
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : {
+Line No : 4
+------------------------------
+Token   : KEYWORD
+Lexeme  : int
+Line No : 5
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : count
+Line No : 5
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 5
+------------------------------
+Token   : INTEGER_CONSTANT
+Lexeme  : 10
+Line No : 5
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : ;
+Line No : 5
+------------------------------
+Token   : KEYWORD
+Lexeme  : float
+Line No : 6
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : avg
+Line No : 6
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 6
+------------------------------
+Token   : INTEGER_CONSTANT
+Lexeme  : 3
+Line No : 6
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : ;
+Line No : 6
+------------------------------
+Token   : KEYWORD
+Lexeme  : char
+Line No : 7
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : grade
+Line No : 7
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 7
+------------------------------
+Token   : CHAR_CONSTANT
+Lexeme  : 'A'
+Line No : 7
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : ;
+Line No : 7
+------------------------------
+Token   : KEYWORD
+Lexeme  : char
+Line No : 8
+------------------------------
+Token   : OPERATOR
+Lexeme  : *
+Line No : 8
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : name
+Line No : 8
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 8
+------------------------------
+Token   : STRING_CONSTANT
+Lexeme  : "Ahmed"
+Line No : 8
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : ;
+Line No : 8
+------------------------------
+Token   : KEYWORD
+Lexeme  : if
+Line No : 10
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : (
+Line No : 10
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : count
+Line No : 10
+------------------------------
+Token   : OPERATOR
+Lexeme  : >=
+Line No : 10
+------------------------------
+Token   : INTEGER_CONSTANT
+Lexeme  : 5
+Line No : 10
+------------------------------
+Token   : OPERATOR
+Lexeme  : &&
+Line No : 10
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : avg
+Line No : 10
+------------------------------
+Token   : OPERATOR
+Lexeme  : !=
+Line No : 10
+------------------------------
+Token   : INTEGER_CONSTANT
+Lexeme  : 0
+Line No : 10
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : )
+Line No : 10
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : {
+Line No : 10
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : count
+Line No : 11
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 11
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : count
+Line No : 11
+------------------------------
+Token   : OPERATOR
+Lexeme  : +
+Line No : 11
+------------------------------
+Token   : INTEGER_CONSTANT
+Lexeme  : 1
+Line No : 11
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : ;
+Line No : 11
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : }
+Line No : 12
+------------------------------
+Token   : KEYWORD
+Lexeme  : int
+Line No : 14
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : bad
+Line No : 14
+------------------------------
+ERROR   : Undefined symbol '@'
+Line No : 14
+------------------------------
+Token   : KEYWORD
+Lexeme  : char
+Line No : 15
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : c
+Line No : 15
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 15
+------------------------------
+ERROR   : Char constant too long
+Line No : 15
+------------------------------
+Token   : KEYWORD
+Lexeme  : char
+Line No : 16
+------------------------------
+Token   : OPERATOR
+Lexeme  : *
+Line No : 16
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : msg
+Line No : 16
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 16
+------------------------------
+ERROR   : String constant exceeds line
+Line No : 16
+------------------------------
+Token   : KEYWORD
+Lexeme  : int
+Line No : 17
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : y
+Line No : 17
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 17
+------------------------------
+ERROR   : Undefined symbol '5x'
+Line No : 17
+------------------------------
+Token   : KEYWORD
+Lexeme  : int
+Line No : 18
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : z
+Line No : 18
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 18
+------------------------------
+ERROR   : Undefined symbol '~'
+Line No : 18
+------------------------------
+Token   : KEYWORD
+Lexeme  : int
+Line No : 19
+------------------------------
+Token   : IDENTIFIER
+Lexeme  : w
+Line No : 19
+------------------------------
+Token   : OPERATOR
+Lexeme  : =
+Line No : 19
+------------------------------
+ERROR   : Undefined symbol '#'
+Line No : 19
+------------------------------
+Token   : KEYWORD
+Lexeme  : return
+Line No : 21
+------------------------------
+Token   : INTEGER_CONSTANT
+Lexeme  : 0
+Line No : 21
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : ;
+Line No : 21
+------------------------------
+Token   : PUNCTUATION
+Lexeme  : }
+Line No : 22
+------------------------------
+ERROR   : Unterminated comment
+Line No : 24
+------------------------------

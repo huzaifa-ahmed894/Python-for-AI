@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CampusLink LMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0E5A5A;--pd:#083A3B;--pl:#E0EEED;--s:#E8A33D;--sl:#FBEFD6;--bg:#F2F6F6;--ink:#12292B;--mu:#5B7173;--ln:#DCE4E3;--bad:#B3402F;--badl:#FBE8E4}
+*{box-sizing:border-box;margin:0}
+body{font:15px/1.55 Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer;border:0}
+:focus-visible{outline:3px solid var(--s);outline-offset:2px}
+.btn{display:inline-block;background:var(--p);color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s}
+.btn:hover{background:var(--pd);transform:translateY(-1px)}.btn.s{background:var(--s);color:#3a2604}.btn.s:hover{background:#d8932b}
+.btn.g{background:#fff;color:var(--p);border:1px solid var(--ln)}.btn.g:hover{background:var(--pl)}
+.mu{color:var(--mu)}.sm{font-size:13px}
+.shell{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:100vh}
+aside{background:var(--pd);padding:24px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.logo{font-weight:800;font-size:21px;color:#fff;padding:0 12px 22px}.logo b{color:var(--s)}
+aside a{color:#bcd6d4;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:500;border-left:3px solid transparent;transition:background .2s,color .2s}
+aside a:hover{background:rgba(255,255,255,.08);color:#fff}aside a.on{background:rgba(255,255,255,.12);color:#fff;border-left-color:var(--s)}
+.user{margin-top:auto;padding:12px;font-size:13px;color:#bcd6d4}.user b{display:block;color:#fff}.user a{padding:6px 0;border:0;display:inline-block;color:var(--s)}
+main{padding:34px;max-width:1060px;width:100%}
+.view{animation:in .45s ease both}@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+h1{font-size:27px;font-weight:800;letter-spacing:-.4px}h2{font-size:20px;font-weight:800}h3{font-size:16px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:18px}
+.st{background:var(--p);color:#fff;border-radius:16px;padding:18px 20px}.st:nth-child(2){background:#fff;color:var(--ink);border:1px solid var(--ln)}.st:nth-child(3){background:var(--sl);color:#4a3205}
+.st span{font-size:13px;opacity:.85}.st b{display:block;font-size:30px;font-weight:800;line-height:1.3}
+.bar{height:7px;background:var(--ln);border-radius:9px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;width:0;background:var(--s);border-radius:9px;transition:width .9s ease}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+.pn{background:#fff;border:1px solid var(--ln);border-radius:16px;padding:18px 20px}.pn h3{margin-bottom:6px;display:flex;justify-content:space-between}.pn small{color:var(--mu);font-weight:500}
+.li{display:flex;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--ln)}.li b{flex:1;font-weight:700}.li .mu{font-size:13px;min-width:68px}
+.pad{padding:14px 0}.chip{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--pl);color:var(--p)}.chip.u{background:var(--badl);color:var(--bad)}.chip.w{background:var(--sl);color:#7a4f06}
+.srch{width:100%;max-width:380px;padding:11px 14px;border:1px solid var(--ln);border-radius:10px;background:#fff;margin-bottom:18px}
+.badge{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--pl);color:var(--p)}.badge.bad{background:var(--badl);color:var(--bad)}.badge.wait{background:var(--sl);color:#7a4f06}
+.st:nth-child(4){background:#fff;color:var(--ink);border:1px solid var(--ln)}.li .mu{white-space:nowrap}
+.tb{background:#fff;border:1px solid var(--ln);border-radius:16px;overflow:hidden}
+.rh,.rw{display:grid;grid-template-columns:78px minmax(0,2fr) minmax(0,1.6fr) 54px 104px 118px;gap:14px;align-items:center;padding:13px 18px}
+.rh{background:var(--pl);color:var(--p);font-size:13px;font-weight:700}
+.rw{border-top:1px solid var(--ln);animation:in .4s ease both;animation-delay:calc(var(--i)*35ms);transition:background .2s,box-shadow .2s}
+.rw:hover{background:#f6fbfa;box-shadow:inset 3px 0 0 var(--s)}
+.code{font-weight:800;color:var(--p)}.cr{font-weight:700}.seat .bar{margin-top:4px}.bd{color:var(--bad);font-weight:700}.ac{text-align:right}.ac .btn{padding:7px 14px;font-size:14px}
+.bx{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px}.bx .srch{margin:0;flex:1;min-width:220px}
+.fls{display:flex;gap:6px;flex-wrap:wrap}.fl{background:#fff;border:1px solid var(--ln);padding:8px 14px;border-radius:99px;font-weight:700;color:var(--mu);transition:.15s}.fl:hover{border-color:var(--p)}.fl.on{background:var(--p);color:#fff;border-color:var(--p)}
+.donut{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding-top:8px}.arc{transition:stroke-dasharray 1s ease}
+.lg{display:flex;flex-direction:column;gap:8px;font-size:14px}.lg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px}
+.vb{display:flex;gap:10px;align-items:flex-end;height:176px;padding-top:8px}.vc{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%}
+.vbar{flex:1;width:100%;display:flex;align-items:flex-end;background:var(--bg);border-radius:8px;overflow:hidden}.vbar i{width:100%;height:0;background:var(--p);border-radius:8px 8px 0 0;transition:height .9s ease}.vbar i.t{background:var(--s)}
+.hb{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,3fr) 46px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--ln);font-size:14px}.hb>div:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hb .bar{margin:0;height:10px}.hb .bar i.a{background:var(--p)}
+@media(max-width:860px){.rh{display:none}.rw{grid-template-columns:auto 1fr}.rw>*:nth-child(n+3){grid-column:1/-1}.ac{text-align:left}}
+.days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.dc{background:#fff;border:1px solid var(--ln);border-radius:14px;padding:12px;min-height:110px}.dc h3{font-size:13px;color:var(--mu);margin-bottom:8px}
+.cls{background:var(--pl);border-left:3px solid var(--p);border-radius:8px;padding:6px 8px;margin-bottom:6px;font-size:12px}.cls b{display:block}
+.ov{position:fixed;inset:0;background:rgba(8,58,59,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:9;animation:fade .2s}@keyframes fade{from{opacity:0}}
+.mod{background:#fff;border-radius:18px;padding:26px;width:100%;max-width:440px;display:flex;flex-direction:column;gap:12px;animation:pop .25s ease}@keyframes pop{from{opacity:0;transform:scale(.94)}}
+.sum{background:var(--bg);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:2px}.sum span{color:var(--mu);font-size:14px}
+.row{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.alert{background:var(--badl);color:var(--bad);border-radius:10px;padding:10px 14px;font-weight:500;font-size:14px}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--pd);color:#fff;padding:12px 18px;border-radius:12px;z-index:20;animation:in .3s;border-left:4px solid var(--s)}.toast.bad{background:var(--bad)}
+.login{display:grid;grid-template-columns:1.1fr 1fr;min-height:100vh}.hero{background:var(--pd);color:#fff;padding:60px;display:flex;flex-direction:column;justify-content:center;gap:14px}.hero h1{font-size:40px;line-height:1.15}.hero p{color:#bcd6d4;max-width:380px}
+.lbox{margin:auto;width:100%;max-width:370px;padding:24px;display:flex;flex-direction:column;gap:14px}
+label{display:flex;flex-direction:column;gap:5px;font-weight:700;font-size:14px}input,textarea{padding:11px 14px;border:1px solid var(--ln);border-radius:10px;background:#fff;font-weight:400}
+.q{background:#fff;border:1px solid var(--ln);border-radius:16px;padding:18px 20px;margin-bottom:12px}.q p{font-weight:700;margin-bottom:10px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}.o{background:var(--bg);border:1px solid var(--ln);padding:8px 16px;border-radius:10px;font-weight:700;transition:.15s}.o:hover{border-color:var(--p)}.o.on{background:var(--p);color:#fff;border-color:var(--p)}
+@media(max-width:860px){.shell,.login{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:12px}.logo{padding:6px 10px}.user{display:none}main{padding:20px}.hero{padding:36px}.days{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><div id="app"></div>
+<script>
+const $=s=>document.querySelector(s);let me=null,courses=[],fb={};
+const api=async(u,o={})=>{const r=await fetch('/api/'+u,{method:o.method||'GET',headers:{'Content-Type':'application/json'},credentials:'same-origin',body:o.body?JSON.stringify(o.body):undefined});let d={};try{d=await r.json()}catch(x){}if(!r.ok){const e=new Error(d.error||'Something went wrong. Try again.');e.code=d.code;e.status=r.status;throw e}return d};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=m=>{const h=Math.floor(m/60);return(h%12||12)+':'+String(m%60).padStart(2,'0')+(h<12?' AM':' PM')};
+const slot=c=>c.days.split(',').join(' and ')+', '+fmt(c.start)+' to '+fmt(c.end);
+function toast(t,bad){const e=document.createElement('div');e.className='toast'+(bad?' bad':'');e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),3200)}
+function modal(h){closeModal();const m=document.createElement('div');m.className='ov';m.id='ov';m.innerHTML='<div class="mod" role="dialog" aria-modal="true">'+h+'</div>';m.onclick=e=>{if(e.target===m)closeModal()};document.body.appendChild(m)}
+function closeModal(){const m=$('#ov');if(m)m.remove()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+const NAV=[['dashboard','Dashboard'],['register','Register courses'],['courses','My courses'],['notices','Notices'],['feedback','Feedback']];
+const shell=(r,h)=>`<div class="shell"><aside><div class="logo">Campus<b>Link</b></div>${NAV.map(n=>`<a href="#/${n[0]}" class="${n[0]===r?'on':''}">${n[1]}</a>`).join('')}<div class="user"><b>${esc(me.name)}</b>${esc(me.sid)}<br><a href="#" data-act="out">Log out</a></div></aside><main class="view">${h}</main></div>`;
+const loginView=()=>`<div class="login"><div class="hero"><div class="logo" style="padding:0">Campus<b>Link</b></div><h1>Your semester, organised.</h1><p>Register for courses and keep your classes, deadlines and notices in one place.</p></div><form id="lf" class="lbox" novalidate><h2>Student sign in</h2><label>Student ID<input id="sid" autocomplete="username" placeholder="24F-CS-001"></label><label>Password<input id="pw" type="password" autocomplete="current-password" placeholder="Enter your password"></label><div id="lerr"></div><button class="btn">Sign in</button><p class="mu sm">Demo account: 24F-CS-001 / student123</p></form></div>`;
+const until=d=>Math.round((new Date(d+'T00:00:00')-new Date(new Date().toDateString()))/864e5);
+const when=n=>n<=0?'Today':n===1?'Tomorrow':'In '+n+' days';
+let flt='all';
+const seat=c=>{const l=c.capacity-c.taken;return `<div class="seat"><span class="sm ${l<=0?'bd':''}">${l<=0?'Full':l+' left'}</span><div class="bar"><i style="width:${Math.min(100,c.taken/c.capacity*100)}%"></i></div></div>`};
+const hd=my=>`<div class="rh"><span>Code</span><span>Course</span><span>Schedule</span><span>Credits</span><span>${my?'':'Seats'}</span><span style="text-align:right">Action</span></div>`;
+function row(c,i,my){const act=my?`<button class="btn g" data-act="drop" data-id="${c.id}">Drop</button>`:c.enrolled?'<span class="badge">Registered</span>':c.waitlisted?'<span class="badge wait">On waitlist</span>':`<button class="btn" data-act="reg" data-id="${c.id}">Register</button>`;
+return `<div class="rw" style="--i:${Math.min(i,14)}"><span class="code">${esc(c.code)}</span><div><b>${esc(c.title)}</b><div class="mu sm">${esc(c.instructor)}</div></div><div class="sm">${slot(c)}<div class="mu">${esc(c.room)}</div></div><span class="cr">${c.credits} cr</span>${my?'<span></span>':seat(c)}<div class="ac">${act}</div></div>`}
+const list=q=>{const f=courses.filter(c=>(c.code+' '+c.title+' '+c.instructor).toLowerCase().includes(q.toLowerCase())&&(flt==='all'||(flt==='open'&&c.capacity>c.taken&&!c.enrolled)||(flt==='full'&&c.capacity<=c.taken)||(flt==='mine'&&c.enrolled)));return f.length?f.map((c,i)=>row(c,i)).join(''):'<p class="mu pad" style="padding-left:18px">No courses match. Try another search or filter.</p>'};
+const fill=()=>{if($('#list'))$('#list').innerHTML=list($('#q').value)};
+const DAYS=['Mon','Tue','Wed','Thu','Fri'];
+const V={
+async dashboard(){const d=await api('dashboard');
+const hrs=DAYS.map(x=>d.courses.filter(c=>c.days.split(',').includes(x)).reduce((a,c)=>a+(c.end-c.start)/60,0)),tot=+hrs.reduce((a,b)=>a+b,0).toFixed(1),mx=Math.max(...hrs,1),pct=Math.round(d.credits/d.max_credits*100),mc=Math.max(...d.courses.map(c=>c.credits),1);
+return `<div class="head"><div><h1>Welcome back, ${esc(me.name.split(' ')[0])}</h1><p class="mu">${esc(me.program)}, semester ${me.semester}</p></div><a class="btn s" href="#/register">Register for courses</a></div>
+<div class="stats"><div class="st"><span>Enrolled courses</span><b data-n="${d.courses.length}">0</b></div><div class="st"><span>Credit hours</span><b><span data-n="${d.credits}">0</span> / ${d.max_credits}</b><div class="bar"><i data-w="${pct}"></i></div></div><div class="st"><span>Class hours per week</span><b data-n="${tot}">0</b></div><div class="st"><span>On waitlist</span><b data-n="${d.waitlisted}">0</b></div></div>
+<div class="two"><section class="pn"><h3>Credit usage</h3><div class="donut"><svg viewBox="0 0 42 42" width="150" height="150" role="img" aria-label="${pct} percent of credit limit used"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="var(--ln)" stroke-width="5"/><circle class="arc" cx="21" cy="21" r="15.9155" fill="none" stroke="var(--p)" stroke-width="5" stroke-linecap="round" style="stroke-dasharray:0 100" data-d="${pct}" transform="rotate(-90 21 21)"/><text x="21" y="22.5" text-anchor="middle" font-size="7" font-weight="800" fill="var(--ink)">${pct}%</text><text x="21" y="27.5" text-anchor="middle" font-size="2.8" fill="var(--mu)">of limit</text></svg><div class="lg"><div><i style="background:var(--p)"></i>Used: ${d.credits} credit hours</div><div><i style="background:var(--ln)"></i>Left: ${d.max_credits-d.credits} credit hours</div><div class="mu sm">${d.courses.length} courses this semester</div></div></div></section>
+<section class="pn"><h3>Weekly class hours <small>Total ${tot}h</small></h3><div class="vb">${DAYS.map((x,i)=>`<div class="vc"><span class="mu sm">${+hrs[i].toFixed(1)}h</span><div class="vbar"><i class="${x===d.day?'t':''}" data-h="${hrs[i]/mx*100}"></i></div><span class="sm">${x}</span></div>`).join('')}</div></section></div>
+<section class="pn" style="margin-bottom:16px"><h3>Courses this semester <small>Credit hours</small></h3>${d.courses.length?d.courses.map((c,i)=>`<div class="hb"><div><b>${esc(c.code)}</b> <span class="mu sm">${esc(c.title)}</span></div><div class="bar"><i class="${i%2?'':'a'}" data-w="${c.credits/mc*100}"></i></div><span class="sm" style="text-align:right">${c.credits} cr</span></div>`).join(''):'<p class="mu pad">No courses yet. Register to see your summary here.</p>'}</section>
+<div class="two"><section class="pn"><h3>Today's classes <small>${d.day}</small></h3>${d.today.length?d.today.map(c=>`<div class="li"><span class="mu">${fmt(c.start)}</span><b>${esc(c.title)}</b><span class="mu">${esc(c.room)}</span></div>`).join(''):'<p class="mu pad">No classes today. Enjoy the break.</p>'}</section>
+<section class="pn"><h3>Upcoming deadlines</h3>${d.deadlines.length?d.deadlines.map(x=>{const n=until(x.due);return `<div class="li"><b>${esc(x.title)}</b><span class="chip ${n<=1?'u':n<=3?'w':''}">${when(n)}</span></div>`}).join(''):'<p class="mu pad">Nothing due. Register for courses to see deadlines.</p>'}</section></div>
+<section class="pn"><h3>Latest notices</h3>${d.notices.map(n=>`<div class="li"><b>${esc(n.title)}</b><span class="mu">${esc(n.created)}</span></div>`).join('')}</section>`},
+async register(){flt='all';courses=(await api('courses')).courses;return `<div class="head"><div><h1>Register courses</h1><p class="mu">Pick a course, review it, then confirm.</p></div></div><div class="bx"><input class="srch" id="q" placeholder="Search by course name, code or teacher" aria-label="Search courses"><div class="fls">${[['all','All'],['open','Open'],['full','Full'],['mine','Registered']].map(f=>`<button class="fl ${f[0]==='all'?'on':''}" data-act="flt" data-f="${f[0]}">${f[1]}</button>`).join('')}</div></div><div class="tb">${hd(0)}<div id="list">${list('')}</div></div>`},
+async courses(){const m=(await api('courses')).courses.filter(c=>c.enrolled);
+return `<div class="head"><div><h1>My courses</h1><p class="mu">${m.length} registered, ${m.reduce((a,c)=>a+c.credits,0)} credit hours</p></div></div>${m.length?`<div class="tb">${hd(1)}${m.map((c,i)=>row(c,i,1)).join('')}</div><h2 style="margin:26px 0 12px">Weekly timetable</h2><div class="days">${DAYS.map(d=>`<div class="dc"><h3>${d}</h3>${m.filter(c=>c.days.split(',').includes(d)).sort((a,b)=>a.start-b.start).map(c=>`<div class="cls"><b>${esc(c.code)}</b>${fmt(c.start)}</div>`).join('')}</div>`).join('')}</div>`:'<div class="pn"><h3>No courses yet</h3><p class="mu pad">Register for your first course to build your timetable.</p><a class="btn" href="#/register">Register for courses</a></div>'}`},
+async notices(){const n=(await api('notices')).notices;return `<div class="head"><h1>Notices</h1></div><section class="pn">${n.map(x=>`<div class="li"><b>${esc(x.title)}</b><span class="mu">${esc(x.created)}</span></div>`).join('')}</section>`},
+async feedback(){fb={};const R=(q,t)=>`<div class="q"><p>${q}. ${t}</p><div class="opts">${[1,2,3,4,5].map(v=>`<button class="o" data-act="rate" data-q="${q}" data-v="${v}">${v}</button>`).join('')}</div></div>`;
+return `<div class="head"><div><h1>Your feedback</h1><p class="mu">Five quick questions. Rating 1 is poor, 5 is excellent.</p></div></div><div id="fbf">${R(1,'How easy was it to register for a course?')}${R(2,'How clear were the error and course-full messages?')}<div class="q"><p>3. Could you find the Register courses button quickly?</p><div class="opts">${['Very easily','With some effort','Not easily'].map(v=>`<button class="o" data-act="rate" data-q="3" data-v="${v}">${v}</button>`).join('')}</div></div>${R(4,'How do you rate the look and feel of the dashboard?')}<div class="q"><p>5. What is one thing we should improve? (optional)</p><textarea id="fb5" rows="3" maxlength="500" style="width:100%" placeholder="Type your suggestion"></textarea></div><div id="fberr"></div><button class="btn" data-act="fb">Send feedback</button></div>`}};
+function anim(){document.querySelectorAll('[data-n]').forEach(e=>{const t=+e.dataset.n;let n=0;e.textContent=0;if(t>0){const iv=setInterval(()=>{n++;e.textContent=n>=t?e.dataset.n:n;if(n>=t)clearInterval(iv)},70)}});setTimeout(()=>{document.querySelectorAll('[data-w]').forEach(e=>e.style.width=e.dataset.w+'%');document.querySelectorAll('[data-h]').forEach(e=>e.style.height=e.dataset.h+'%');document.querySelectorAll('[data-d]').forEach(e=>e.style.strokeDasharray=e.dataset.d+' 100')},60)}
+async function render(){const r=location.hash.replace('#/','')||'dashboard';
+if(!me){try{me=await api('me')}catch(x){me=null}}
+if(!me){$('#app').innerHTML=loginView();return}
+if(!V[r]){location.hash='#/dashboard';return}
+try{$('#app').innerHTML=shell(r,await V[r]());anim()}catch(e){if(e.status===401){me=null;return render()}toast(e.message,1)}}
+addEventListener('hashchange',render);
+document.addEventListener('input',e=>{if(e.target.id==='q')$('#list').innerHTML=list(e.target.value)});
+document.addEventListener('submit',async e=>{if(e.target.id!=='lf')return;e.preventDefault();const s=$('#sid').value.trim(),p=$('#pw').value;
+if(!s||!p){$('#lerr').innerHTML='<div class="alert">Enter your student ID and password.</div>';return}
+try{await api('login',{method:'POST',body:{sid:s,password:p}});me=null;location.hash='#/dashboard';render()}catch(x){$('#lerr').innerHTML='<div class="alert">'+esc(x.message)+'</div>'}});
+function confirmReg(c){modal(`<h2>Review and confirm</h2><p class="mu">You are registering for:</p><div class="sum"><b>${esc(c.code)} ${esc(c.title)}</b><span>${slot(c)}</span><span>${c.credits} credits, ${esc(c.room)}</span></div><div id="err"></div><div class="row" id="acts"><button class="btn g" data-act="close">Cancel</button><button class="btn" data-act="doreg" data-id="${c.id}">Confirm registration</button></div>`)}
+document.addEventListener('click',async e=>{const t=e.target.closest('[data-act]');if(!t)return;const a=t.dataset.act,id=+t.dataset.id;
+if(a==='out'){e.preventDefault();await api('logout',{method:'POST'});me=null;location.hash='';render()}
+else if(a==='flt'){flt=t.dataset.f;document.querySelectorAll('.fl').forEach(b=>b.classList.toggle('on',b===t));fill()}
+else if(a==='close')closeModal();
+else if(a==='reg')confirmReg(courses.find(c=>c.id===id));
+else if(a==='doreg'){try{const r=await api('register',{method:'POST',body:{course_id:id}});closeModal();toast(r.message);courses=(await api('courses')).courses;fill()}
+catch(x){if(x.status===401){closeModal();me=null;return render()}$('#err').innerHTML='<div class="alert">'+esc(x.message)+(x.code==='FULL'?' Join the waitlist or choose another course.':' Fix this and try again.')+'</div>';
+$('#acts').innerHTML=x.code==='FULL'?`<button class="btn g" data-act="close">Choose another</button><button class="btn s" data-act="wait" data-id="${id}">Join waitlist</button>`:'<button class="btn g" data-act="close">Back to courses</button>'}}
+else if(a==='wait'){try{const r=await api('waitlist',{method:'POST',body:{course_id:id}});closeModal();toast(r.message);courses=(await api('courses')).courses;fill()}catch(x){toast(x.message,1)}}
+else if(a==='drop'){const c=(await api('courses')).courses.find(c=>c.id===id);modal(`<h2>Drop this course?</h2><div class="sum"><b>${esc(c.code)} ${esc(c.title)}</b></div><div class="row"><button class="btn g" data-act="close">Keep course</button><button class="btn" style="background:var(--bad)" data-act="dodrop" data-id="${id}">Drop course</button></div>`)}
+else if(a==='dodrop'){try{const r=await api('register/'+id,{method:'DELETE'});closeModal();toast(r.message);render()}catch(x){toast(x.message,1)}}
+else if(a==='rate'){fb[t.dataset.q]=isNaN(t.dataset.v)?t.dataset.v:+t.dataset.v;t.parentNode.querySelectorAll('.o').forEach(b=>b.classList.toggle('on',b===t))}
+else if(a==='fb'){if(![1,2,3,4].every(k=>fb[k]!==undefined)){$('#fberr').innerHTML='<div class="alert" style="margin-bottom:12px">Please answer questions 1 to 4.</div>';return}
+try{await api('feedback',{method:'POST',body:{answers:[fb[1],fb[2],fb[3],fb[4],$('#fb5').value.trim()]}});$('#fbf').innerHTML='<div class="pn"><h3>Thank you</h3><p class="mu pad">Your feedback was sent. We use it to improve the next version.</p><a class="btn" href="#/dashboard">Back to dashboard</a></div>'}catch(x){$('#fberr').innerHTML='<div class="alert" style="margin-bottom:12px">'+esc(x.message)+'</div>'}}});
+render();
+</script></body></html>

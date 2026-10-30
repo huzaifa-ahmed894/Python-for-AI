@@ -1,0 +1,29 @@
+Token	Lexeme	Line No
+KEYWORD	int	1
+ID	main	1
+PUNCTUATION	(	1
+PUNCTUATION	)	1
+PUNCTUATION	{	1
+KEYWORD	int	2
+ERROR	Undefined symbol _	2
+KEYWORD	char	5
+ID	grade	5
+OPERATOR	=	5
+CHAR	'A'	5
+PUNCTUATION	;	5
+ID	cd	6
+KEYWORD	char	7
+ID	badGrade	7
+OPERATOR	=	7
+ERROR	Char constant too long	7
+KEYWORD	float	8
+ID	x	8
+OPERATOR	=	8
+NUMBER	7	8
+ERROR	Undefined symbol .	8
+ID	string	9
+ID	name	9
+OPERATOR	=	9
+STRING	"Huzaifa n Sameer"	9
+PUNCTUATION	}	10
+ERROR	Un-terminated comment	11
